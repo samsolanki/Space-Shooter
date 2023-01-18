@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: cc7cb1886d1ade646bbb6ae59e8a7b34
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - a Abstract Groovy
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 126f0b757363849448ea230d0f99f676, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
