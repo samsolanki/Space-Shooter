@@ -29,7 +29,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private GameObject[] level5;
     [SerializeField] private GameObject[] level6;
     [SerializeField] private GameObject[] level7;
-    [SerializeField] private GameObject[] level8;
+    [SerializeField] private GameObject[] level8;   
     [SerializeField] private GameObject[] level9;
     [SerializeField] private GameObject[] level10;
 
@@ -38,6 +38,9 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        
+
         defauleSpwanRate = 0;
         
     }
@@ -45,6 +48,10 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.isGamePlay == false)
+            return;
+
+
         score = ScoreManager.instance.scoreCount;
         defauleSpwanRate -= Time.deltaTime;
         if(defauleSpwanRate <= 0 && score <= 100)
@@ -116,66 +123,5 @@ public class SpawnEnemy : MonoBehaviour
         GameObject planet = Instantiate(level[ramdomMeteor], new Vector2(transform.position.x, randomPos), Quaternion.identity) as GameObject;
     }
 
-
-
-
-    IEnumerator Spawner()
-    {
-        while (true)
-        {
-            if (score <= 100)
-            {
-                SpaenEnemy(level1);
-            }
-            if (score >= 100)
-            {
-                print("level 2 loaed");
-                SpaenEnemy(level2);
-
-            }
-            if (score >= 200)
-            {
-                SpaenEnemy(level3);
-                print("level 3 loaed");
-            }
-            if (score >= 300)
-            {
-                SpaenEnemy(level4);
-                print("level 4 loaed");
-            }
-            if (score >= 400)
-            {
-                SpaenEnemy(level5);
-                print("level 5 loaed");
-            }
-            if (score >= 500)
-            {
-                SpaenEnemy(level6);
-                print("level 6 loaed");
-            }
-            if (score >= 600)
-            {
-                SpaenEnemy(level7);
-                print("level 7 loaed");
-            }
-            if (score >= 700)
-            {
-                SpaenEnemy(level8);
-                print("level 8 loaed");
-            }
-            if (score >= 800)
-            {
-                SpaenEnemy(level9);
-                print("level 9 loaed");
-            }
-            if (score >= 900)
-            {
-                SpaenEnemy(level10);
-                print("level 10 loaed");
-            }
-
-            yield return new WaitForSeconds(0);
-        }
-    }
 }
 

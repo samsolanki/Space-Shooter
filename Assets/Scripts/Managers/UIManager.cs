@@ -10,11 +10,14 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
 
     [SerializeField] private GameObject gameoverPenal;
+    [SerializeField] private GameObject gameplayPenal;
+    [SerializeField] private GameObject playerSelectorPenal;
+    [SerializeField] private GameObject powerUpSelectorPenal;
+    [SerializeField] private GameObject commanPenal;
     [SerializeField] private TextMeshProUGUI gameoverScoreText;
 
 
     public float timer = 1;
-
 
 
     private void Awake()
@@ -26,7 +29,34 @@ public class UIManager : MonoBehaviour
 
 
         gameoverPenal.SetActive(false);
+        playerSelectorPenal.SetActive(false);
+        powerUpSelectorPenal.SetActive(false);
+        gameplayPenal.SetActive(false);
+        commanPenal.SetActive(true);
 
+    }
+
+
+    public void StartGame() {
+        GameManager.instance.isGamePlay = true;
+        gameplayPenal.SetActive(true);
+        commanPenal.SetActive(false);
+        playerSelectorPenal.SetActive(false);
+        powerUpSelectorPenal.SetActive(false);
+    }
+
+    public void PlayerSelectMenuOpen()
+    {
+        playerSelectorPenal.SetActive(true);
+        gameplayPenal.SetActive(false);
+        powerUpSelectorPenal.SetActive(false);
+    }
+
+    public void PowerupSelectMenuOpen()
+    {
+        playerSelectorPenal.SetActive(false);
+        gameplayPenal.SetActive(false);
+        powerUpSelectorPenal.SetActive(true);
     }
 
 
@@ -43,7 +73,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         ScoreManager.instance.scoreCount = 0;
         SceneManager.LoadScene(0);
-
     }
 
 }

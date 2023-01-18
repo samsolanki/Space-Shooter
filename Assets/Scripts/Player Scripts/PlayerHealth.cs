@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private Slider healthBar;
+    private Slider healthBar;
     [SerializeField] private int health = 100;
 
     [HideInInspector]
@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         _anim = GetComponent<PlayerAnimationContrallor>();
-
+        healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
         healthBar.value = health;
     }
 
