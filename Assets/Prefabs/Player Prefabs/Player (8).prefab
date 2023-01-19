@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 762173260204269930}
   - component: {fileID: 762173260204269924}
   - component: {fileID: 762173260204269927}
+  - component: {fileID: 8808559890026518111}
   m_Layer: 0
   m_Name: Player (8)
   m_TagString: Player
@@ -100,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  flotingJoystick: {fileID: 0}
 --- !u!114 &762173260204269931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1b03283eeb74c47ae203dd31b16b3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
   health: 100
   isPlayerDie: 0
 --- !u!114 &762173260204269924
@@ -178,6 +177,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955a2f0ec8c77404484270d370d652d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8808559890026518111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762173260204269932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc825e23a4d4934889c67119cf939e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPlayerLevel: 0
+  isUnlocked: 0
+  initialPrice: 20
+  upGradePrice: 
+  playerHealth: []
+  playerSpeed: []
+  playerDamage: []
+  playerFirerate: []
 --- !u!1 &762173260681986060
 GameObject:
   m_ObjectHideFlags: 0

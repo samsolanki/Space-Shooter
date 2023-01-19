@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed;
     private FloatingJoystick flotingJoystick;
    
     private float x_max = -3.5f;
@@ -15,11 +15,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        flotingJoystick = GameObject.FindObjectOfType<FloatingJoystick>();
+        
+        moveSpeed = PlayerManager.instance.SetSpeed();
+        print("Move SPeed " + moveSpeed);
     }
 
     private void Update()
     {
+        flotingJoystick = GameObject.FindGameObjectWithTag("FlotinfJoystick").GetComponent<FloatingJoystick>();
         if (GameManager.instance.isGamePlay == false)
             return;
 

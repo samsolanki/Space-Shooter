@@ -15,7 +15,13 @@ public class EnemyShooting : MonoBehaviour
 
     private bool shooting;
     private float coolDownTime = 1;
+    private Animator anim;
 
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -29,6 +35,7 @@ public class EnemyShooting : MonoBehaviour
 
     private void Shoot()
     {
+        anim.SetTrigger("Shoot");
         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity) as GameObject;
         bullet.transform.rotation = Quaternion.Euler(0, 0, 180);
         Destroy(bullet, 3);

@@ -14,9 +14,9 @@ TagManager:
   - Brown Missile
   - Blue Missile
   - Red Missile
-  - Floating Joystick
   - HealthBar
-  - FloatingJoystick
+  - LevelUpButton
+  - FlotinfJoystick
   layers:
   - Default
   - TransparentFX

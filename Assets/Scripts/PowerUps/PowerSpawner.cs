@@ -58,7 +58,6 @@ public class PowerSpawner : MonoBehaviour
         PowerUpPrefab randomPowerUp = powerUps[GetRandomIndex()];
         Instantiate(randomPowerUp.prefabs, position, Quaternion.identity);
 
-        Debug.Log("Power up name " + randomPowerUp.name + " Change " + randomPowerUp.chance);
     }
 
 

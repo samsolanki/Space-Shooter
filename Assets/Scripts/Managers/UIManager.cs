@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject playerSelectorPenal;
     [SerializeField] private GameObject powerUpSelectorPenal;
     [SerializeField] private GameObject commanPenal;
+    [SerializeField] private GameObject loadingScean;
     [SerializeField] private TextMeshProUGUI gameoverScoreText;
 
 
@@ -32,13 +33,18 @@ public class UIManager : MonoBehaviour
         playerSelectorPenal.SetActive(false);
         powerUpSelectorPenal.SetActive(false);
         gameplayPenal.SetActive(false);
-        commanPenal.SetActive(true);
-
+        commanPenal.SetActive(false);
     }
 
+    public void LoadMainMenu()
+    {
+        commanPenal.SetActive(true);
+        loadingScean.SetActive(false);
+    }
 
     public void StartGame() {
         GameManager.instance.isGamePlay = true;
+        PlayerManager.instance.StartGame();
         gameplayPenal.SetActive(true);
         commanPenal.SetActive(false);
         playerSelectorPenal.SetActive(false);

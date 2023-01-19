@@ -6,17 +6,35 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     private Slider healthBar;
-    [SerializeField] private int health = 100;
+    [SerializeField] private float health;
 
     [HideInInspector]
     public bool isPlayerDie;
     private PlayerAnimationContrallor _anim;
 
+    private void OnEnable()
+    {
+       
+    }
+
     private void Awake()
     {
         _anim = GetComponent<PlayerAnimationContrallor>();
+       
+    }
+
+    private void Start()
+    {
         healthBar = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
+        health = PlayerManager.instance.SetHealth();
+
         healthBar.value = health;
+        print("health " + health);
+    }
+
+    private void Update()
+    {
+       
     }
 
     public void ApplyDamage(int amount)

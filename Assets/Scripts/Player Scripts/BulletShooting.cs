@@ -10,9 +10,9 @@ public class BulletShooting : MonoBehaviour
 
 
     [Header("Setting")]
-    [SerializeField] private float fireRate = 1;
+    [SerializeField] private float fireRate;
     [SerializeField] private float bulletForce = 20;
-    [SerializeField] private float damage = 10;
+    [SerializeField] private float damage;
     [SerializeField] private float powerUpTimer = 5;
 
     
@@ -55,6 +55,17 @@ public class BulletShooting : MonoBehaviour
     private float coolDownTime = 1;
     private float defaultFirerate;
     private float defaultDamage;
+    private PlayerAnimationContrallor playerAnimationContrallor;
+
+
+    private void Awake()
+    {
+        playerAnimationContrallor = GetComponent<PlayerAnimationContrallor>();
+        fireRate = PlayerManager.instance.SetFirerate();
+        damage = PlayerManager.instance.SetDamage();
+        print("Fire rate " + fireRate);
+        print("damage " + damage);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +77,10 @@ public class BulletShooting : MonoBehaviour
 
     private void Update()
     {
+
+        if (GameManager.instance.isGamePlay == false)
+            return;
+
         coolDownTime -= Time.deltaTime;
         if(coolDownTime <= 0)
         {
@@ -78,6 +93,7 @@ public class BulletShooting : MonoBehaviour
     private void  Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity) as GameObject;
+        playerAnimationContrallor.Shoot();
         Rigidbody2D bulletBody = bullet.transform.GetComponent<Rigidbody2D>();
         bulletBody.velocity = new Vector2(bulletForce, bulletBody.velocity.y);
         Destroy(bullet , 3);
