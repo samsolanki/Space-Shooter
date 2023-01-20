@@ -78,7 +78,7 @@ public class BulletShooting : MonoBehaviour
     private void Update()
     {
 
-        if (GameManager.instance.isGamePlay == false)
+        if (GameManager.instance.GetIsPlayerAlive() == false)
             return;
 
         coolDownTime -= Time.deltaTime;

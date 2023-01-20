@@ -12,18 +12,18 @@ public class PlayerMovement : MonoBehaviour
     private int y_max = 4;
     private int y_min = -4;
 
+    private PlayerAnimationContrallor playerAnimationContrallor;
 
     private void Awake()
     {
-        
+        playerAnimationContrallor = GetComponent<PlayerAnimationContrallor>();
         moveSpeed = PlayerManager.instance.SetSpeed();
-        print("Move SPeed " + moveSpeed);
     }
 
     private void Update()
     {
         flotingJoystick = GameObject.FindGameObjectWithTag("FlotinfJoystick").GetComponent<FloatingJoystick>();
-        if (GameManager.instance.isGamePlay == false)
+        if (GameManager.instance.GetIsPlayerAlive() == false)
             return;
 
         MovePlayer();
@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         Vector3 movement = new Vector3(flotingJoystick.Horizontal, flotingJoystick.Vertical,0);
+        playerAnimationContrallor.Move(movement.x);
+
 
         // GET THE POSITION
         float xPos = transform.position.x + movement.x * moveSpeed * Time.fixedDeltaTime;

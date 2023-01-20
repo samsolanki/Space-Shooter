@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
 
-    public bool isGamePlay;
+    public bool isPlayerAlive;
 
     private void Awake()
     {
@@ -27,9 +27,37 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGamePlay == true)
+        if (isPlayerAlive == true)
         {
-            print(isGamePlay);
+            print(isPlayerAlive);
+        }
+
+        ClearPlayerPrefsData();
+    }
+
+
+    public bool GetIsPlayerAlive()
+    {
+        return isPlayerAlive;
+    }
+
+    public void SetIsPlayerAlive(bool isPlayerAlive)
+    {
+        this.isPlayerAlive = isPlayerAlive;
+    }
+
+    public void GameOver()
+    {
+
+    }
+
+
+    private void ClearPlayerPrefsData()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            print("Data is cleared");
+            PlayerPrefs.DeleteAll();
         }
     }
 }

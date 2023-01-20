@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     [HideInInspector]
     public bool isPlayerDie;
     private PlayerAnimationContrallor _anim;
+    [HideInInspector]
+    public bool isPlayerHasShield;
 
     private void OnEnable()
     {
@@ -32,25 +34,23 @@ public class PlayerHealth : MonoBehaviour
         print("health " + health);
     }
 
-    private void Update()
-    {
-       
-    }
-
     public void ApplyDamage(int amount)
     {
-        health -= amount;
-        healthBar.value = health;
-        if (health <= 0)
+        if(isPlayerHasShield == false)
         {
-            isPlayerDie = true;
-            _anim.DeadAnim();
-            Destroy(gameObject, 1);
-            UIManager.instance.Gameover();
-        }
-        else
-        {
-            _anim.Hit();
+            health -= amount;
+            healthBar.value = health;
+            if (health <= 0)
+            {
+                isPlayerDie = true;
+                _anim.DeadAnim();
+                Destroy(gameObject, 1);
+                UIManager.instance.Gameover();
+            }
+            else
+            {
+                _anim.Hit();
+            }
         }
     }
 
@@ -59,6 +59,11 @@ public class PlayerHealth : MonoBehaviour
         if(collision.tag == "EnemyBullet")
         {
             ApplyDamage(collision.transform.GetComponent<EnemyBullet>().damage);
+        }
+
+        if(collision.tag == "PowerUpShield")
+        {
+            isPlayerHasShield = true;
         }
     }
 

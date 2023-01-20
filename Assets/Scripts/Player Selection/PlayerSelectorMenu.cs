@@ -52,9 +52,11 @@ public class PlayerSelectorMenu : MonoBehaviour
             playerSpeedAmountText[i].text = playerData[i].CurrentPlayerSpeed().ToString();
             playerFirerateAmountText[i].text = playerData[i].CurrentPlayerFireRate().ToString();
             playerUpgradePriceText[i].text = playerData[i].PlayerBuyPrice().ToString();
+            lockedIcon[i].gameObject.SetActive(!playerData[i].GetUnlockState());
+            playerSelectButton[i].gameObject.SetActive(playerData[i].GetUnlockState());
 
 
-            if(playerData[i].GetCurrentLevelOfPlayer() == 5)
+            if(playerData[i].GetCurrentLevelOfPlayer() == 4)
             {
                 upgradeButton[i].gameObject.GetComponent<Button>().interactable = false;
             }
@@ -80,6 +82,7 @@ public class PlayerSelectorMenu : MonoBehaviour
         PlayerManager.instance.SetCurrentPlayerIndex(index);
         currentPlayerIndex = index;
         Destroy(PlayerManager.instance.GetPlayer());
+        PlayerManager.instance.SetPlayer();
         PlayerManager.instance.GetPlayer().SetActive(false);
         //DATAMANAGER TO SET CURRENT PLAYER INDEX TO INDEX
         DataManager.instance.SetCurrentPlayerIndex(index);
@@ -116,5 +119,7 @@ public class PlayerSelectorMenu : MonoBehaviour
         playerSpeedAmountText[index].text = playerData[index].CurrentPlayerSpeed().ToString();
         playerFirerateAmountText[index].text = playerData[index].CurrentPlayerFireRate().ToString();
         playerUpgradePriceText[index].text = playerData[index].PlayerBuyPrice().ToString();
+        lockedIcon[index].gameObject.SetActive(!playerData[index].GetUnlockState());
+        playerSelectButton[index].gameObject.SetActive(playerData[index].GetUnlockState());
     }
 }

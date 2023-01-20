@@ -44,7 +44,7 @@ public class SpawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.isGamePlay == false)
+        if (GameManager.instance.GetIsPlayerAlive() == false)
             return;
 
 

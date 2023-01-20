@@ -24,7 +24,6 @@ public class PlayerManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        currentPlayerIndex = PlayerPrefs.GetInt("SelectedPlayerIndex", 0);
     }
 
 
@@ -40,12 +39,13 @@ public class PlayerManager : MonoBehaviour
 
     public void StartGame()
     {
-        InstantiatePlayer();
+        SetPlayer();
+        
     }
 
-    public void InstantiatePlayer()
+    public void SetPlayer()
     {
-        player = Instantiate(playerPrefabs[0], transform.position, Quaternion.identity) as GameObject;
+        player = Instantiate(playerPrefabs[currentPlayerIndex], transform.position, Quaternion.identity) as GameObject;
         player.transform.position = new Vector3(-5, 0, 0);
     }
 

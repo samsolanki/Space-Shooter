@@ -22,19 +22,19 @@ public class PlayerDataManager : MonoBehaviour
         return playerHealth[currentPlayerLevel];
     }
 
-    //GETTING PLAYER HEALTH LEVEL VIA
+    //GETTING PLAYER SPEED LEVEL VIA
     public float CurrentPlayerSpeed()
     {
         return playerSpeed[currentPlayerLevel];
     }
 
-    //GETTING PLAYER HEALTH LEVEL VIA
+    //GETTING PLAYER DAMAGE LEVEL VIA
     public float CurrentPlayerDamage()
     {
         return playerDamage[currentPlayerLevel];
     }
 
-    //GETTING PLAYER HEALTH LEVEL VIA
+    //GETTING PLAYER FIRERATE LEVEL VIA
     public float CurrentPlayerFireRate()
     {
         return playerFirerate[currentPlayerLevel];
