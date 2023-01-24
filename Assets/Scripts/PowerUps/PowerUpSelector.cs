@@ -58,8 +58,9 @@ public class PowerUpSelector : MonoBehaviour
             if (!powerUpData[index].GetPowerUpUnlockState()) {
                 DataManager.instance.SubstractCoin(powerUpData[index].BuyPowerUp());
                 powerUpData[index].SetPowerUpUnlockState(true);
-                print("Status of power up " + powerUpData[index].GetPowerUpUnlockState());
+               // print("Status of power up " + powerUpData[index].GetPowerUpUnlockState());
                 DataManager.instance.PowerUpUnlockState(currentPowerUpIndex);
+                DataManager.instance.SetCurrentPowerUpIndex(index);
                 SetPowerUpState(index);
             }
             else if (powerUpData[index].GetCurrentPowerUpLevel() < 5)

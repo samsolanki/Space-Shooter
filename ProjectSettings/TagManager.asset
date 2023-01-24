@@ -17,6 +17,8 @@ TagManager:
   - HealthBar
   - LevelUpButton
   - FlotinfJoystick
+  - Shield
+  - gems
   layers:
   - Default
   - TransparentFX

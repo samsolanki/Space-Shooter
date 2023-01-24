@@ -134,6 +134,16 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt(playerPrefsData.KEY_SELECTED_PLAYER_INDEX, index);
     }
 
+    public void SetCurrentPowerUpIndex(int index)
+    {
+        PlayerPrefs.SetInt(playerPrefsData.KEY_SELECTED_POWERUP_INDEX, index);
+    }
+
+    public int GetCurrentPowerUpIndex()
+    {
+        return PlayerPrefs.GetInt(playerPrefsData.KEY_SELECTED_POWERUP_INDEX);
+    }
+
     public void CurrentsPlayerUnlockState(int index)
     {
         PlayerPrefs.SetInt(playerPrefsData.KEY_UNLOCK_PLAYER + index, 1);

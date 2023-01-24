@@ -5,14 +5,23 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+
     private Slider healthBar;
     [SerializeField] private float health;
 
     [HideInInspector]
     public bool isPlayerDie;
     private PlayerAnimationContrallor _anim;
-    [HideInInspector]
-    public bool isPlayerHasShield;
+
+    private bool isPlayerHasShield;
+    public bool GetIsPlayerHasShield()
+    {
+        return isPlayerHasShield;
+    }
+    public void SetIsPlayerHasShield(bool isHas)
+    {
+        isPlayerHasShield = isHas;
+    }
 
     private void OnEnable()
     {
@@ -31,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         health = PlayerManager.instance.SetHealth();
 
         healthBar.value = health;
-        print("health " + health);
+       // print("health " + health);
     }
 
     public void ApplyDamage(int amount)
@@ -59,11 +68,6 @@ public class PlayerHealth : MonoBehaviour
         if(collision.tag == "EnemyBullet")
         {
             ApplyDamage(collision.transform.GetComponent<EnemyBullet>().damage);
-        }
-
-        if(collision.tag == "PowerUpShield")
-        {
-            isPlayerHasShield = true;
         }
     }
 

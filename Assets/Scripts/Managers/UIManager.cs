@@ -19,6 +19,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameoverScoreText;
 
 
+    [SerializeField] private TextMeshProUGUI gemsText;
+    public TextMeshProUGUI GetGemsText()
+    {
+        return gemsText;
+    }
+   public void SetGemsText(int value)
+    {
+        gemsText.text += value.ToString();
+    }
+
+
     public float timer = 1;
 
 
@@ -37,6 +48,13 @@ public class UIManager : MonoBehaviour
         commanPenal.SetActive(false);
         pausePenal.SetActive(false);
     }
+
+
+    private void Update()
+    {
+        gemsText.text = GetGemsText().ToString();
+    }
+
 
     //MAIN MENU LOADING
     public void LoadMainMenu()

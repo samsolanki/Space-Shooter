@@ -56,15 +56,17 @@ public class BulletShooting : MonoBehaviour
     private float defaultFirerate;
     private float defaultDamage;
     private PlayerAnimationContrallor playerAnimationContrallor;
+    private PlayerHealth playerHealth;
 
 
     private void Awake()
     {
         playerAnimationContrallor = GetComponent<PlayerAnimationContrallor>();
+        playerHealth = GetComponent<PlayerHealth>();
         fireRate = PlayerManager.instance.SetFirerate();
         damage = PlayerManager.instance.SetDamage();
-        print("Fire rate " + fireRate);
-        print("damage " + damage);
+        //print("Fire rate " + fireRate);
+        //print("damage " + damage);
     }
 
     // Start is called before the first frame update
@@ -89,7 +91,7 @@ public class BulletShooting : MonoBehaviour
         }
     }
 
-
+    //PLAYER BULLET SHOOTING
     private void  Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, Quaternion.identity) as GameObject;
@@ -110,6 +112,15 @@ public class BulletShooting : MonoBehaviour
         bulletPrefab.GetComponent<SpriteRenderer>().sprite = defaultBullet;
         this.fireRate = defaultFirerate;
         this.damage = defaultDamage;
+    }
+
+    IEnumerator ShieldPowerUp()
+    {
+        playerAnimationContrallor.ShieldActivated(true);
+        playerHealth.SetIsPlayerHasShield(true);
+        yield return new WaitForSeconds(powerUpTimer);
+        playerHealth.SetIsPlayerHasShield(false);
+        playerAnimationContrallor.ShieldActivated(false);
     }
 
 
@@ -146,6 +157,12 @@ public class BulletShooting : MonoBehaviour
         if (collision.tag == "Red Missile")
         {
             StartCoroutine(PowerUp(redBullet, redMissileDamage, redMissileFirerate));
+            Destroy(collision.gameObject);
+        }
+        if(collision.tag == "Shield")
+        {
+            print("Shield Activated");
+            StartCoroutine(ShieldPowerUp());
             Destroy(collision.gameObject);
         }
     }

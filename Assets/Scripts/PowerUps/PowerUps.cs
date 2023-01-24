@@ -32,7 +32,6 @@ public class PowerUps : MonoBehaviour
     {
         transform.Translate(Vector3.left * 10 * Time.deltaTime);
         time -= Time.deltaTime;
-
     }
 
     public void PowerUp()

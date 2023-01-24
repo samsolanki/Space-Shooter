@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerCollider : MonoBehaviour
 {
+
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Green Missile"))
@@ -24,6 +28,11 @@ public class PlayerCollider : MonoBehaviour
         if (collision.CompareTag("Brown Missile"))
         {
             Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("gems"))
+        {
+          
         }
     }
 }

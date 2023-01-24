@@ -14,6 +14,10 @@ public class PlayerAnimationContrallor : MonoBehaviour
         shootAnimation = GameObject.Find("Shooting Point").GetComponent<Animator>();
     }
 
+    public void ShieldActivated(bool isActivated)
+    {
+        _anim.SetBool("Shield", isActivated);
+    }
     public void Move(float move)
     {
         _anim.SetFloat("Move", move);

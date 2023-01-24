@@ -7,35 +7,40 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private FloatingJoystick flotingJoystick;
    
-    private float x_max = -3.5f;
-    private float x_min = -7.5f;
-    private int y_max = 4;
-    private int y_min = -4;
+    private float x_max = -3.5f; //X MAX BOUNDRIES OF PLAYER
+    private float x_min = -7.5f; //X MIN BOUNDRIES OF PLAYER
+    private int y_max = 4; //Y MAX BOUNDRIES OF PLAYER
+    private int y_min = -4; //Y MIN BOUNDRIES OF PLAYER
 
     private PlayerAnimationContrallor playerAnimationContrallor;
 
     private void Awake()
     {
         playerAnimationContrallor = GetComponent<PlayerAnimationContrallor>();
-        moveSpeed = PlayerManager.instance.SetSpeed();
+        moveSpeed = PlayerManager.instance.SetSpeed(); //SETTING MOVE SPEED TO MANAGER FOR CHANGE VIS PLAYER LEVEL
+    }
+
+    private void Start()
+    {
+        flotingJoystick = GameObject.FindGameObjectWithTag("FlotinfJoystick").GetComponent<FloatingJoystick>();
     }
 
     private void Update()
     {
-        flotingJoystick = GameObject.FindGameObjectWithTag("FlotinfJoystick").GetComponent<FloatingJoystick>();
         if (GameManager.instance.GetIsPlayerAlive() == false)
             return;
 
         MovePlayer();
     }
 
+    //PLAYER MOVING USING JOYSTICK INPUT
     private void MovePlayer()
     {
         Vector3 movement = new Vector3(flotingJoystick.Horizontal, flotingJoystick.Vertical,0);
         playerAnimationContrallor.Move(movement.x);
 
 
-        // GET THE POSITION
+        // GET THE POSITION PLAYER + JOYSTICK INPUT
         float xPos = transform.position.x + movement.x * moveSpeed * Time.fixedDeltaTime;
         float yPos = transform.position.y + movement.z * moveSpeed * Time.fixedDeltaTime;
 

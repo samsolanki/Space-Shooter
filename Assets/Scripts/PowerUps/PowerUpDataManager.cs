@@ -36,7 +36,7 @@ public class PowerUpDataManager : MonoBehaviour
     //Get LOCK STATE
     public bool GetPowerUpUnlockState()
     {
-        Debug.Log(isPowerUpUnlocked);
+        //Debug.Log("is power pu unlock :" + isPowerUpUnlocked);
         return isPowerUpUnlocked;
     }
 

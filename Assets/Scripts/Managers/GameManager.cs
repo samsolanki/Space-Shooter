@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         if (isPlayerAlive == true)
         {
-            print(isPlayerAlive);
+            //print(isPlayerAlive);
         }
 
         ClearPlayerPrefsData();

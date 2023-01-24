@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -18,19 +19,19 @@ public class PowerSpawner : MonoBehaviour
     [SerializeField] private float moveSpeed = 10;
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private PowerUpDataManager[] powerUpData;
-    [SerializeField][Range(0f,100f)] private float[] chance;
-    [HideInInspector] public float[] weight;
-
+    [SerializeField] private float probalityOfMissile1 = 100;
+    [SerializeField] private float probalityOfMissile2 = 80;
+    [SerializeField] private float probalityOfMissile3 = 60;
+    [SerializeField] private float probalityOfMissile4 = 50;
+    [SerializeField] private float probalityOfMissile5 = 30;
+    [SerializeField] private float probalityOfMissile6 = 50;
+    [SerializeField] private float probalityOfMissile7 = 70;
+    [SerializeField] private float probalityOfMissile8 = 100;
+   
    
     private float defaultSpawnTime = 5;
+    
 
-    private float accumlatedWeight;
-    private System.Random random = new System.Random();
-
-    private void Awake()
-    {
-        //CalculateWeight();
-    }
 
     // Update is called once per frame
     void Update()
@@ -42,72 +43,86 @@ public class PowerSpawner : MonoBehaviour
         defaultSpawnTime -= Time.deltaTime;
        
         if (defaultSpawnTime <= 0) {
-            //SpawnPower();
-            PowerUpSpawner(new Vector2(transform.position.x, Random.Range(-4, 4)));
+            SpawnPowerUps();
             defaultSpawnTime = spawnRate;
         }
 
     }
 
 
-    private void PowerUpSpawner(Vector2 position)
+    public void SpawnPowerUps()
     {
-        for(int i = 0; i < powerUpData.Length; i++)
+        for (int i = 0; i < powerUpData.Length; i++)
         {
             if (powerUpData[i].GetPowerUpUnlockState())
             {
-                GameObject randomSpawn = powerUps[GetRandomIndex()];
-                Instantiate(randomSpawn, position, Quaternion.identity);
-            }
-        }
-
-        /*
-
-        for(int i=0; i < powerUpData.Length; i++)
-        {
-            if (powerUpData[i].GetPowerUpUnlockState())
-            {
-                PowerUpPrefab randomPowerUp = powerUps[GetRandomIndex()];
-                Instantiate(powe, position, Quaternion.identity);
-            }
-        }
-
-        */
-    }
-   
-   
-    private int GetRandomIndex()
-    {
-       
-            float r = random.Next() * accumlatedWeight;
-            for (int i = 0; i <= weight.Length; i++)
-            {
-                if (weight[i] >= r)
+                if (i == 0)
                 {
-                    return i;
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile1)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
                 }
+                else if (i == 1 )
+                {
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile2)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
+                }
+                else if (i == 2)
+                {
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile3)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
+                }
+                else if (i == 3)
+                {
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile4)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
+                }
+                else if (i == 4)
+                {
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile5)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
+                }
+                else if (i == 5)
+                {
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile6)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
+                }
+                else if (i == 6)
+                {
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile7)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
+                }
+                else if (i == 7)
+                {
+                    int randomValue = Random.Range(0, 100);
+                    if (randomValue <= probalityOfMissile8)
+                    {
+                        Instantiate(powerUps[i], new Vector3(transform.position.x, Random.Range(-4, 4)), Quaternion.identity);
+                    }
+                }
+                
             }
-       
-        return 0;
-    }
-    private void CalculateWeight()
-    {
-        /*
-        accumlatedWeight = 0;
-        foreach(PowerUpPrefab powerUp in powerUps)
-        {
-            accumlatedWeight += powerUp.chance;
-            powerUp.weight = accumlatedWeight;
         }
-
-        
-        for(int i = 0; i < powerUps.Length; i++)
-        {
-            accumlatedWeight[i] += chance[i];
-            weight[i] = accumlatedWeight[i];
-        }
-
-        */
     }
    
 }

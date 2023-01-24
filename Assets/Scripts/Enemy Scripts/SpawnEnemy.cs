@@ -8,18 +8,13 @@ public class SpawnEnemy : MonoBehaviour
 
     [Space]
     [Header("Setting")]
-    [SerializeField] private float spawnRateLevel1 = 3;
-    [SerializeField] private float spawnRateLevel2 = 2;
-    [SerializeField] private float spawnRateLevel3 = 2;
-    [SerializeField] private float spawnRateLevel4 = 2;
-    [SerializeField] private float spawnRateLevel5 = 2;
-    [SerializeField] private float spawnRateLevel6 = 2;
-    [SerializeField] private float spawnRateLevel7 = 2;
-    [SerializeField] private float spawnRateLevel8 = 2;
-    [SerializeField] private float spawnRateLevel9 = 2;
-    [SerializeField] private float spawnRateLevel10 = 2;
+    [SerializeField] private float[] spawnRate1;
+    [SerializeField] private float[] spawnRate2;
+    [SerializeField] private float[] spawnRate3;
+    [SerializeField] private float[] spawnRate4;
+    [SerializeField] private float[] spawnRate5;
 
-
+    private int levelIndex;
 
     [Header("Levels")]
     [SerializeField] private GameObject[] level1;
@@ -54,60 +49,63 @@ public class SpawnEnemy : MonoBehaviour
         {
             print("Method called");
             SpaenEnemy(level1);
-            defauleSpwanRate = spawnRateLevel1;
+            defauleSpwanRate = spawnRate1[levelIndex];
         }if(defauleSpwanRate <= 0 && (score >= 100 && score <= 200))
         {
             print("Level 2 Loaded");
             SpaenEnemy(level2);
-            defauleSpwanRate = spawnRateLevel2;
+            defauleSpwanRate = spawnRate1[levelIndex];
         }
          if (defauleSpwanRate <= 0 && (score >= 200 && score <= 400))
         {
             print("Level 3 Loaded");
             SpaenEnemy(level3);
-            defauleSpwanRate = spawnRateLevel3;
+            defauleSpwanRate = spawnRate1[levelIndex];
         }
         if (defauleSpwanRate <= 0 && (score >= 400 && score <= 650))
         {
             print("Level 4 Loaded");
             SpaenEnemy(level4);
-            defauleSpwanRate = spawnRateLevel4;
+            defauleSpwanRate = spawnRate1[levelIndex];
+            ;
         }
         if (defauleSpwanRate <= 0 && (score >= 650 && score <= 900))
         {
             print("Level 5 Loaded");
             SpaenEnemy(level5);
-            defauleSpwanRate = spawnRateLevel5;
+            defauleSpwanRate = spawnRate1[levelIndex];
+            ;
         }
         if (defauleSpwanRate <= 0 && (score >= 900 && score <= 1100))
         {
             print("Level 6 Loaded");
             SpaenEnemy(level6);
-            defauleSpwanRate = spawnRateLevel6;
+            defauleSpwanRate =spawnRate1[levelIndex];
+            ;
         }
         if (defauleSpwanRate <= 0 && (score >= 1100 && score <= 1300))
         {
             print("Level 7 Loaded");
             SpaenEnemy(level7);
-            defauleSpwanRate = spawnRateLevel7;
+            defauleSpwanRate = spawnRate1[levelIndex];
         }
         if (defauleSpwanRate <= 0 && (score >= 1300 && score <= 1500))
         {
             print("Level 8 Loaded");
             SpaenEnemy(level8);
-            defauleSpwanRate = spawnRateLevel8;
+            defauleSpwanRate = spawnRate1[levelIndex];
         }
         if (defauleSpwanRate <= 0 && (score >= 1500 && score <= 1700))
         {
             print("Level 9 Loaded");
             SpaenEnemy(level9);
-            defauleSpwanRate = spawnRateLevel9;
+            defauleSpwanRate = spawnRate1[levelIndex];
         }
         if (defauleSpwanRate <= 0 && (score >= 1700 && score <= 2000))
         {
             print("Level 10 Loaded");
             SpaenEnemy(level10);
-            defauleSpwanRate = spawnRateLevel10;
+            defauleSpwanRate = spawnRate1[levelIndex];
         }
     }
 
