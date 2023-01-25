@@ -19,13 +19,14 @@ public class CoinUI : MonoBehaviour
         instance = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
         coinAmount = DataManager.instance.totalCoin;
         tragetCoins = DataManager.instance.totalCoin;
         coinAmountText.text = coinAmount.ToString();
     }
+
 
     // Update is called once per frame
     void Update()
